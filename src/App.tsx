@@ -3,27 +3,26 @@ import "./App.css";
 import NewsList from "./components/NewsList";
 import { PageContainer } from "./styles/Common.styles";
 import { useDispatch, useSelector } from "react-redux";
-import { getNews } from "./redux/slice";
+import { getBchPrice, getBchPriceHistory, getNews } from "./redux/slice";
 import { AppDispatch, RootState } from "./redux/store";
+import PriceHistoryGraph from "./components/PriceHistoryGraph";
 
 function App() {
   const newsList = useSelector((state: RootState) => state.reducer.data.newsList);
-
-  // const bchPrice = useSelector((state: RootState) => state.reducer.data.bchPrice);
-  // const bchPriceHistory = useSelector((state: RootState) => state.reducer.data.bchPriceHistory);
+  const bchPrice = useSelector((state: RootState) => state.reducer.data.bchPrice);
+  const bchPriceHistory = useSelector((state: RootState) => state.reducer.data.bchPriceHistory);
 
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     dispatch(getNews());
+    dispatch(getBchPrice());
+    dispatch(getBchPriceHistory());
   }, [dispatch]);
-
-  //   console.log(bchPrice);
-  //   console.log(newsList);
-  //   console.log(bchPriceHistory);
 
   return (
     <PageContainer>
+      <PriceHistoryGraph bchPriceHistory={bchPriceHistory} />
       <NewsList newsList={newsList} />
     </PageContainer>
   );

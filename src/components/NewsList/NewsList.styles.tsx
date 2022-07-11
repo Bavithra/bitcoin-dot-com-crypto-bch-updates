@@ -3,13 +3,14 @@ import styled from "styled-components";
 import { FontSizes } from "../../styles/FontSizes";
 import { mediaMax } from "../../styles/MediaQuery.styles";
 
-export const InContainer = styled.div`
+export const NewsItem = styled.div`
   position: relative;
   z-index: 0;
   display: flex;
   flex: 1 1 0%;
   flex-direction: column;
   justify-content: center;
+  align-self: baseline;
   box-sizing: border-box;
   border-radius: 24px;
   background: rgb(255, 255, 255);
@@ -39,8 +40,20 @@ export const NewsTitle = styled.h1`
   font-size: 24px;
   color: #3c1053;
   margin: 12px;
+  min-height: 200px;
 
   ${mediaMax("md")} {
     font-size: ${FontSizes.size6};
+    min-height: 0px;
   }
+`;
+
+export const Image = styled.img`
+  width: 100%;
+  max-width: unset;
+  max-height: 200px;
+  height: 200px;
+  object-fit: cover;
+  margin: auto auto 0px;
+  border-radius: 0px;
 `;

@@ -14,6 +14,13 @@ function getFormattedNewsList(response: string | Buffer) {
   });
 }
 
+export function formatTitle(str: string) {
+  return str.replace(/&#(\d+);/g, function (_match, dec) {
+    return String.fromCharCode(dec);
+  });
+}
+
 export default {
   getFormattedNewsList,
+  formatTitle,
 };

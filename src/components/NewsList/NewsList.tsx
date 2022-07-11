@@ -1,8 +1,10 @@
 import React from "react";
 import { INewsList } from "../../redux/slice";
-import { ComponentContainer } from "../../styles/Common.styles";
+import { ComponentContainer, Text } from "../../styles/Common.styles";
+import DateUtil from "../../utils/DateUtil";
+import NewsUtil from "../../utils/NewsUtil";
 
-import { Container, InContainer, NewsTitle } from "./NewsList.styles";
+import { Container, NewsItem, NewsTitle, Image } from "./NewsList.styles";
 
 type Props = {
   newsList: INewsList[];
@@ -16,12 +18,14 @@ function NewsList(props: Props) {
       <h1>News</h1>
 
       <Container>
-        {newsList.map((news: any) => {
+        {newsList.map((news: INewsList) => {
+          console.log(news)
           return (
-            <InContainer key={news.title}>
-              <img alt={news.imageUrl} src={news.imageUrl} />
-              <NewsTitle>{news.title}</NewsTitle>
-            </InContainer>
+            <NewsItem key={news.title}>
+              <Image alt={news.imageUrl} src={news.imageUrl} />
+              <NewsTitle>{NewsUtil.formatTitle(news.title)}</NewsTitle>
+              <Text>{DateUtil.getDuration(news["published-date"])}</Text>
+            </NewsItem>
           );
         })}
       </Container>
