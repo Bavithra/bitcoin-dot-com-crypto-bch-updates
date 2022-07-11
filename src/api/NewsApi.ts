@@ -1,10 +1,10 @@
-import { XMLParser } from "fast-xml-parser";
+import NewsUtil from "../utils/NewsUtil";
 import ApiClient from "./ApiClient";
 
 async function getNews() {
-  const xmlResponse = await ApiClient.get("https://news.bitcoin.com/feed/");
-  const jsonResponse = new XMLParser().parse(xmlResponse.data);
-  return jsonResponse.rss.channel.item.slice(0, 4);
+  const response = await ApiClient.get("https://news.bitcoin.com/feed/");
+
+  return NewsUtil.getFormattedNewsList(response.data);
 }
 
 export default {
