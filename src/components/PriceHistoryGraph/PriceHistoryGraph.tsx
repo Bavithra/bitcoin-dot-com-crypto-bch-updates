@@ -10,6 +10,7 @@ import {
 } from "recharts";
 import ButtonGroup from "../../common/ButtonGroup";
 import { GraphPeriod } from "../../enums/GraphPeriod.enum";
+import DateUtil from "../../utils/DateUtil";
 import GraphUtil from "../../utils/GraphUtil";
 import { Container } from "./PriceHistoryGraph.styles";
 
@@ -42,7 +43,13 @@ function PriceHistoryGraph(props: Props) {
             bottom: 15,
           }}
         >
-          <XAxis minTickGap={1} dataKey="date" />
+          <XAxis
+            height={60}
+            interval={0}
+            angle={period === GraphPeriod.OneMonth ? -20 : 0}
+            dataKey="date"
+            tickFormatter={(tickItem) => DateUtil.formatXAxis(period, tickItem)}
+          />
           <YAxis dataKey="price" />
           <Area dataKey="price" stroke="#04c18e" fill="#f6f7fa" />
           <Tooltip />
