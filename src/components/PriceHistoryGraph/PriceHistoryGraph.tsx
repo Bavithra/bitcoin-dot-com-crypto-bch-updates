@@ -8,7 +8,7 @@ import {
   CartesianGrid,
   ResponsiveContainer,
 } from "recharts";
-import ButtonGroup from "../../common/ButtonGroup/NewsList/ButtonGroup";
+import ButtonGroup from "../../common/ButtonGroup";
 import { GraphPeriod } from "../../enums/GraphPeriod.enum";
 import GraphUtil from "../../utils/GraphUtil";
 import { Container } from "./PriceHistoryGraph.styles";
@@ -36,17 +36,17 @@ function PriceHistoryGraph(props: Props) {
           height={250}
           data={data}
           margin={{
-            top: 20,
-            right: 20,
-            bottom: 20,
-            left: 20,
+            top: 0,
+            right: 0,
+            left: 0,
+            bottom: 15,
           }}
         >
-          <XAxis dataKey="date" />
-          <YAxis />
+          <XAxis minTickGap={1} dataKey="date" />
+          <YAxis dataKey="price" />
           <Area dataKey="price" stroke="#04c18e" fill="#f6f7fa" />
           <Tooltip />
-          <CartesianGrid stroke="#ccc" strokeDasharray="1 1" />
+          <CartesianGrid stroke="#ccc" strokeDasharray="5 2" />
         </AreaChart>
       </ResponsiveContainer>
       <ButtonGroup

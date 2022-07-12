@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { GraphPeriod } from "../../../enums/GraphPeriod.enum";
+import { GraphPeriod } from "../../enums/GraphPeriod.enum";
 import { Button, Container } from "./ButtonGroup.styles";
 
 type Props = {

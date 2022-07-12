@@ -25,6 +25,7 @@ function getDisplayDate(dateTime: Date | string): string {
   return formatDateTime(dateTime, DATE_TIME_FORMAT);
 }
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
   getDuration,
   getDisplayDate

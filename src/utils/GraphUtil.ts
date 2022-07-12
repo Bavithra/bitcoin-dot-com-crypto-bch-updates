@@ -1,26 +1,19 @@
-import {
-  isThisMonth,
-  isThisWeek,
-  isToday,
-} from "date-fns";
+import { subDays, subMonths, subWeeks } from "date-fns";
 import { GraphPeriod } from "../enums/GraphPeriod.enum";
 import DateUtil from "./DateUtil";
 
-export function getFilteredDate(
-  bchPriceHistoryDate: string,
-  selectedPeriod: GraphPeriod
-) {
+export function getFilteredDate(selectedPeriod: GraphPeriod) {
   switch (selectedPeriod) {
     case GraphPeriod.OneDay: {
-      return isToday(new Date(bchPriceHistoryDate));
+      return subDays(new Date(), 1);
     }
 
     case GraphPeriod.OneWeek: {
-      return isThisWeek(new Date(bchPriceHistoryDate));
+      return subWeeks(new Date(), 1);
     }
 
     case GraphPeriod.OneMonth: {
-      return isThisMonth(new Date(bchPriceHistoryDate));
+      return subMonths(new Date(), 1);
     }
   }
 }
@@ -36,11 +29,16 @@ export function getFormattedGraphData(
         price: bchPriceHistory[1] / 100,
       };
     })
-    .filter((bchPriceHistory) =>
-      getFilteredDate(bchPriceHistory.date, selectedPeriod)
-    );
+    .filter(
+      (bchPriceHistory) =>
+        new Date(bchPriceHistory.date) >= getFilteredDate(selectedPeriod)
+    )
+    .sort((bchPriceHistory) => {
+      return new Date(bchPriceHistory.date).getTime() - new Date().getTime();
+    });
 }
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
   getFormattedGraphData,
 };
