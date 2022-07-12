@@ -1,5 +1,5 @@
 export enum GraphPeriod {
-  OneDay = '24 Hour',
-  OneWeek = '7 Days',
-  OneMonth = '1 Month',
+  OneDay = '24H',
+  OneWeek = '7D',
+  OneMonth = '1M',
 }

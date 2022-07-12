@@ -19,7 +19,6 @@ function NewsList(props: Props) {
 
       <Container>
         {newsList.map((news: INewsList) => {
-          console.log(news)
           return (
             <NewsItem key={news.title}>
               <Image alt={news.imageUrl} src={news.imageUrl} />

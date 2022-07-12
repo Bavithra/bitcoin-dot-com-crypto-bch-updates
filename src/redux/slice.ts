@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import BchPrice from "../api/BchPrice";
+import BchPrice from "../api/BchPriceApi";
 import NewsApi from "../api/NewsApi";
 
 export interface State {
@@ -28,14 +28,12 @@ export interface IBchPrice {
 export const getNews = createAsyncThunk<INewsList[]>("getNews", async () => {
   const response = await NewsApi.getNews();
   // The value we return becomes the `fulfilled` action payload
-  console.log(response);
   return response;
 });
 
 export const getBchPrice = createAsyncThunk<IBchPrice>("getBchPrice", async () => {
   const response = await BchPrice.getBchPrice();
   // The value we return becomes the `fulfilled` action payload
-  console.log(response);
   return response;
 });
 
@@ -44,7 +42,6 @@ export const getBchPriceHistory = createAsyncThunk<[]>(
   async () => {
     const response = await BchPrice.getBchPriceHistory();
     // The value we return becomes the `fulfilled` action payload
-    console.log(response);
     return response;
   }
 );

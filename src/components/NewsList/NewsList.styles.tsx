@@ -24,7 +24,6 @@ export const Container = styled.div`
   gap: 32px 24px;
   grid-template-columns: repeat(4, 1fr);
   display: grid;
-  margin: 12px 0px;
   width: 100%;
   flex-wrap: wrap;
   justify-content: center;
@@ -40,7 +39,7 @@ export const NewsTitle = styled.h1`
   font-size: 24px;
   color: #3c1053;
   margin: 12px;
-  min-height: 200px;
+  min-height: 100px;
 
   ${mediaMax("md")} {
     font-size: ${FontSizes.size6};

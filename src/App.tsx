@@ -8,9 +8,15 @@ import { AppDispatch, RootState } from "./redux/store";
 import PriceHistoryGraph from "./components/PriceHistoryGraph";
 
 function App() {
-  const newsList = useSelector((state: RootState) => state.reducer.data.newsList);
-  const bchPrice = useSelector((state: RootState) => state.reducer.data.bchPrice);
-  const bchPriceHistory = useSelector((state: RootState) => state.reducer.data.bchPriceHistory);
+  const newsList = useSelector(
+    (state: RootState) => state.reducer.data.newsList
+  );
+  const bchPrice = useSelector(
+    (state: RootState) => state.reducer.data.bchPrice
+  );
+  const bchPriceHistory = useSelector(
+    (state: RootState) => state.reducer.data.bchPriceHistory
+  );
 
   const dispatch = useDispatch<AppDispatch>();
 
@@ -22,6 +28,8 @@ function App() {
 
   return (
     <PageContainer>
+      <h1>Bitcoin Cash</h1>
+      <h3>{`${bchPrice.price / 100} USD`}</h3>
       <PriceHistoryGraph bchPriceHistory={bchPriceHistory} />
       <NewsList newsList={newsList} />
     </PageContainer>

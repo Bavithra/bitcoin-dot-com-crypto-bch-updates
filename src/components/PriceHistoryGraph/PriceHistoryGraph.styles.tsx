@@ -1,16 +1,19 @@
 import styled from "styled-components";
+import { Colors } from "../../styles/Colors";
 
 import { FontSizes } from "../../styles/FontSizes";
 import { mediaMax } from "../../styles/MediaQuery.styles";
 
 export const Container = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  margin: 40px;
+  margin: 40px 32px 0;
+  padding: 20px;
   box-sizing: border-box;
   border-radius: 24px;
   background: rgb(255, 255, 255);
-  background-color: rgb(246, 247, 250);
+  background-color: ${Colors.purewhite};
   box-shadow: rgb(0 0 0 / 10%) 0px 20px 50px 0px;
 `;
 
