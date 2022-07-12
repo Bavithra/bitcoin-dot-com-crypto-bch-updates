@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { FontSizes } from "../../styles/FontSizes";
 import { mediaMax } from "../../styles/MediaQuery.styles";
 
-export const NewsItem = styled.div`
+export const NewsItem = styled.a`
   position: relative;
   z-index: 0;
   display: flex;

@@ -20,7 +20,7 @@ function NewsList(props: Props) {
       <Container>
         {newsList.map((news: INewsList) => {
           return (
-            <NewsItem key={news.title}>
+            <NewsItem key={news.title} href={news.link} target='_blank'>
               <Image alt={news.imageUrl} src={news.imageUrl} />
               <NewsTitle>{NewsUtil.formatTitle(news.title)}</NewsTitle>
               <Text>{DateUtil.getDuration(news["published-date"])}</Text>
